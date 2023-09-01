@@ -62,7 +62,7 @@ const count = {};
 bot.on("pre_checkout_query", async (query) => {
     if (query.total_amount < PRICE * 100) {
         bot.answerPreCheckoutQuery(query.id, false, {
-            error_message: "Please update invoice using /payment command 😊",
+            error_message: "يرجى تحديث الفاتورة باستخدام /payment أمر 😊",
         });
         return;
     }
@@ -93,7 +93,7 @@ bot.on("message", async (msg) => {
                 msg.successful_payment.invoice_payload ?? chatId,
                 msg.from?.language_code == "ru"
                     ? "Оплата произведена! Спасибо. Бот теперь доступен на один месяц ❤️"
-                    : "Payment complete! Thank you. This bot is now available for a period of one month ❤️"
+                    : "الدفع تم! شكرًا لك. هذا البوت متوفر الآن لمدة شهر ❤️"
             );
             bot.sendMessage(
                 process.env.ADMIN_ID,
@@ -116,7 +116,7 @@ bot.on("message", async (msg) => {
                     chatId,
                     msg.from?.language_code == "ru"
                         ? `Полная функциональность появится после оплаты ❤️ Приглашаем вас присоединиться к нашей группе и попробовать бота в ней 😊 ${process.env.GROUP_RU}`
-                        : `Full functionality will appear after payment ❤️ We invite you to join our group to try the bot 😊`
+                        : `ستظهر الوظائف الكاملة بعد الدفع ❤️ ندعوك للانضمام إلى مجموعتنا لتجربة الروبوت 😊`
                 )
                     .then(() => {})
                     .catch((e) => {
@@ -134,7 +134,7 @@ bot.on("message", async (msg) => {
                     chatId,
                     msg.from?.language_code == "ru"
                         ? "Привет! К сожалению, вы превысили лимит запросов 😏 Это не проблема - вы всегда можете приобрести новую подписку! ❤️"
-                        : "Hello! Unfortunately, you have exceeded your subscription request count 😏 That's not a problem - you can always purchase a new one! ❤️"
+                        : "مرحبًا! لسوء الحظ، لقد تجاوزت عدد طلبات الاشتراك الخاصة بك 😏 هذه ليست مشكلة - يمكنك دائمًا شراء واحدة جديدة! ❤️"
                 );
                 bot.sendMessage(
                     process.env.ADMIN_ID,
@@ -197,7 +197,7 @@ const processCommand = (chatId, msg, language_code) => {
             chatId,
             language_code == "ru"
                 ? "Нарисуй <что-то>\nЗагугли/Погугли <что-то>\nСброс\nТемпература 36.5 - 41.5\nПропуск <x>\nОтвечай\nРежим <притворись что ты ...>\n/payment\n/terms\n/terms_group\n/status\n/support"
-                : "Paint <some>\nDraw <some>\nGoogle <some>\nReset\nTemperature 36.5 - 41.5\nSkip <x>\nAnswer\nMode <pretend you are ...>\n/payment\n/terms\n/terms_group\n/status\n/support"
+                : "'طباعة <some>\nرسم <some>\nGoogle <some>\nتنظيف\n\nتخطي <x>\nاجابة\nوضع <>\n/دفع\n/terms\n/terms_group\n/status\n/support"
         );
         return true;
     }
@@ -206,7 +206,7 @@ const processCommand = (chatId, msg, language_code) => {
             chatId,
             language_code == "ru"
                 ? `Привет! Я ChatGPT бот. Я могу говорить с вами на любом языке. Я могу нарисовать все что вы хотите. Вы также можете отправить мне изображение, и я переведу его в текст. Я могу искать в Google любую информацию, которая вам нужна. Используйте /help для списка команд 😊 \n\nНаша группа: ${process.env.GROUP_RU}`
-                : `Hello! I'm ChatGPT. Feel free to speak to me in any language. I can Paint <anything> you want. You can also send me an image, and I will translate it to text. I can search Google for any information you need. Use /help for more options 😊`
+                : `مرحبا! أنا ChatGPT. لا تتردد في التحدث معي بأي لغة. يمكنني أن أرسم <أي شيء> تريده. يمكنك أيضا أن ترسل لي صورة، وسأترجمها إلى نص. يمكنني البحث في جوجل عن أي معلومات تحتاجها. استخدم /help لمزيد من الخيارات 😊 \n\nانظم للمجموعة لكي يعمل البوت معك مجاناً: ${process.env.GROUP_EN}\n\n للمزيد من مساعدة راسل مطور البوت:@ta_ja199 `
         );
         return true;
     }
@@ -215,7 +215,7 @@ const processCommand = (chatId, msg, language_code) => {
             chatId,
             language_code == "ru"
                 ? `После оплаты подписки $${GROUP_PRICE} вы можете использовать все функции ChatGPT бота в течение месяца для всей группы (без ограничения количества людей), включая Нарисуй, Загугли, и другие.`
-                : `After making a payment of $${GROUP_PRICE}, you will have access to the ChatGPT bot for one month for entire group (unlimited numer of people), with full features (including Paint, Photo2Text, Google, and more)`
+                : `بعد إجراء دفعة من $${GROUP_PRICE}, ستتمكن من الوصول إلى روبوت ChatGPT لمدة شهر واحد للمجموعة بأكملها  (عدد غير محدود من الأشخاص) ، مع ميزات كاملة (بما في ذلك الطلاء ، نص الصورة 2 ، Google ، وأكثر)`
         );
         return true;
     }
@@ -224,7 +224,7 @@ const processCommand = (chatId, msg, language_code) => {
             chatId,
             language_code == "ru"
                 ? `После оплаты подписки $${PRICE} в течение месяца вы можете использовать все функции бота, включая Нарисуй, Загугли, и другие без каких-либо ограничений`
-                : `After making a payment of $${PRICE}, you will have access to the ChatGPT bot for one month, with full features (including Paint, Photo2Text, Google, and more) without any limitations`
+                : `بعد إجراء دفعة من $${PRICE}, ستتمكن من الوصول إلى روبوت ChatGPT لمدة شهر واحد، مع ميزات كاملة (بما في ذلك Paint وPhoto2Text وGoogle والمزيد) دون أي قيود`
         );
         return true;
     }
@@ -238,7 +238,7 @@ const processCommand = (chatId, msg, language_code) => {
             chatId,
             language_code == "ru"
                 ? `Если у вас возникли проблемы с оплатой, пожалуйста, напишите мне в личные сообщения @${process.env.ADMIN}`
-                : `For any inquiries regarding refunds and cancellations please contact @${process.env.ADMIN}`
+                : `لأي استفسارات تتعلق بالمبالغ المستردة والإلغاءات، يرجى الاتصال @${process.env.ADMIN}`
         );
         return true;
     }
@@ -266,8 +266,8 @@ const processCommand = (chatId, msg, language_code) => {
         writeChatSuffix(chatSuffix);
         return true;
     }
-    if (msg === "reset") {
-        bot.sendMessage(chatId, "Context cleared");
+    if (msg === "تنظيف") {
+        bot.sendMessage(chatId, "تم تنظيف  المحتويات");
         context[chatId] = "";
         chatSuffix[chatId] = "";
         writeChatSuffix(chatSuffix);
@@ -279,7 +279,7 @@ const processCommand = (chatId, msg, language_code) => {
         bot.sendMessage(chatId, "Отвечать раз в " + skip[chatId]);
         return true;
     }
-    if (msg.startsWith("skip ")) {
+    if (msg.startsWith("تخطي")) {
         skip[chatId] = +msg.slice(5);
         writeSkip(skip);
         bot.sendMessage(chatId, "Skip " + skip[chatId]);
@@ -306,18 +306,18 @@ const processCommand = (chatId, msg, language_code) => {
         bot.sendMessage(chatId, "Режим установлен");
         return true;
     }
-    if (msg === "mode" || msg === "mode usual") {
+    if (msg === "وضع" || msg === "mode usual") {
         chatSuffix[chatId] = "";
         context[chatId] = "";
         writeChatSuffix(chatSuffix);
-        bot.sendMessage(chatId, "Usual mode");
+        bot.sendMessage(chatId, "الوضع المعتاد");
         return true;
     }
-    if (msg.startsWith("mode ")) {
+    if (msg.startsWith("وضع")) {
         chatSuffix[chatId] = "(" + msg?.substring(5, 100) + ")";
         context[chatId] = "";
         writeChatSuffix(chatSuffix);
-        bot.sendMessage(chatId, "Mode set");
+        bot.sendMessage(chatId, "مجموعة الوضع");
         return true;
     }
 
@@ -328,7 +328,7 @@ const processCommand = (chatId, msg, language_code) => {
         return true;
     }
 
-    if (msg.startsWith("temperature ")) {
+    if (msg.startsWith("درجة الحرارة ")) {
         temp[chatId] = +msg.slice(12)?.replace(",", ".");
         writeTemp(temp);
         bot.sendMessage(chatId, "Temperature set to " + temp[chatId]);
@@ -339,7 +339,7 @@ const processCommand = (chatId, msg, language_code) => {
 const sendInvoice = (chatId, language_code) => {
     bot.sendInvoice(
         chatId,
-        language_code == "ru" ? "Требуется оплата" : "Need payment",
+        language_code == "ru" ? "Требуется оплата" : "تحتاج إلى دفعة",
         language_code == "ru" ? "Подписка ChatGPT на 1 месяц" : "1-month access to ChatGPT",
         chatId,
         process.env.STRIPE_KEY,
@@ -353,12 +353,12 @@ const sendInvoice = (chatId, language_code) => {
                             : "full access to P2P chat"
                         : language_code == "ru"
                         ? "Полный доступ к групповому чату"
-                        : "full access to GROUP chat",
+                        : "الوصول الكامل إلى الدردشة الجماعية",
                 amount: chatId > 0 ? PRICE * 100 : GROUP_PRICE * 100,
             },
         ],
         {
-            photo_url: "https://blog.maxsoft.tk/AI.png",
+            photo_url: "https://www.linkpicture.com/q/PNG_2.png",
             need_name: false,
             need_phone_number: false,
             need_email: false,
