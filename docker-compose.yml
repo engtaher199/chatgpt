@@ -1,0 +1,13 @@
+version: "1.7"
+services:
+  worker:
+    build: .
+    environment
+      ADMIN: $ADMIN  
+      ADMIN_ID: $ADMIN_ID  
+      GROUP_EN: $GROUP_EN 
+      GROUP_EN_ID: $GROUP_EN_ID
+      OPENAI_KEY: $OPENAI_KEY
+      TELEGRAM_KEY: $TELEGRAM_KEY
+      STRIPE_KEY: $STRIPE_KEY
+      GOOGLE_KEY: $GOOGLE_KEY
